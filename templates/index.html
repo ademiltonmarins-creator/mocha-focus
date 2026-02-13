@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mocha Focus</title>
+
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/confetti.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🔥 Mocha Focus</h1>
+
+<div class="card">
+  <h2>🏆 Nível {{ nivel }}</h2>
+  <p>XP: <span id="xp">{{ xp_total }}</span></p>
+  <div class="xp-bar"><div class="xp-fill" style="width: {{ xp_nivel }}%"></div></div>
+  <p>🔥 Streak: {{ streak }}</p>
+</div>
+
+<div class="card">
+<h2>➕ Nova Tarefa</h2>
+
+<form method="POST" action="/nova_tarefa" class="form-grid">
+  <input name="titulo" placeholder="O que você vai fazer?" required>
+
+  <select name="categoria">
+    <option value="Casa">🏠 Casa</option>
+    <option value="Estudo">📚 Leitura / Estudo</option>
+    <option value="Fisico">🏃 Atividade Física</option>
+  </select>
+
+  <select name="dificuldade">
+    <option value="facil">Fácil (+10 XP)</option>
+    <option value="media">Média (+20 XP)</option>
+    <option value="dificil">Difícil (+30 XP)</option>
+  </select>
+
+  <button>Adicionar</button>
+</form>
+</div>
+
+<div class="card">
+<h2>📋 Tarefas</h2>
+
+{% for t in tarefas %}
+<div class="task {{ t[2]|lower }}">
+  <span>{{ t[1] }}</span>
+  <small>{{ t[2] }}</small>
+
+  {% if t[5] == 'pendente' %}
+  <button onclick="finish('{{ t[0] }}', {{ t[4] }})">Concluir</button>
+  {% else %}
+  ✔
+  {% endif %}
+</div>
+{% endfor %}
+
+</div>
+
+</div>
+
+<script>
+function finish(id, xp){
+  confetti();
+  setTimeout(() => {
+    window.location.href = "/concluir/" + id;
+  }, 500);
+}
+</script>
+
+</body>
+</html>

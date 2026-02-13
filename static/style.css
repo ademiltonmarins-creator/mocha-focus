@@ -1,0 +1,58 @@
+body {
+  background: radial-gradient(circle, #1b1b2f, #0f0f1a);
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 10px;
+}
+
+input, select, button {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+}
+
+button {
+  background: linear-gradient(135deg, #6a5cff, #00d4ff);
+  color: white;
+  cursor: pointer;
+}
+
+.xp-bar {
+  background: #2a2a3a;
+  height: 16px;
+  border-radius: 20px;
+}
+
+.xp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff99, #00ccff);
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 8px;
+}
+
+.task.casa { background: #2e2e44; }
+.task.estudo { background: #243a5e; }
+.task.fisico { background: #2e4d3a; }
